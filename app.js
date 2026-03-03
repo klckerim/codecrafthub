@@ -17,6 +17,10 @@ const path = require("path");
 const app = express();
 app.use(express.json()); // lets us read JSON request bodies
 
+const cors = require("cors");
+app.use(cors({ origin: ["http://127.0.0.1:5500", "http://localhost:5001"] }));
+
+
 // ---- File location: same folder as this app.js ----
 const DATA_FILE = path.join(__dirname, "courses.json");
 
@@ -303,6 +307,7 @@ const PORT = 5001;
     await ensureDataFileExists();
     app.listen(PORT, () => {
       console.log(`CodeCraftHub API running on http://localhost:${PORT}`);
+      console.log(`API endpoints available at http://127.0.0.1:${PORT}/api/courses`);
     });
   } catch (err) {
     console.error("Failed to start server due to file system error:", err.message);
