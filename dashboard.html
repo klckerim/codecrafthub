@@ -124,7 +124,6 @@
 
         .btn-primary {
             background: #8B5CF6;
-            color: white;
         }
 
         .btn-primary:hover:not(:disabled) {
@@ -642,7 +641,7 @@
             }
         }
 
-        async function deleteCourse(id) {
+        async function handleDelete(id) {
             if (!confirm('Are you sure you want to delete this course? This action cannot be undone.')) {
                 return;
             }
@@ -708,7 +707,7 @@
                     </div>
                     <div class="course-actions">
                         <button class="btn-success" onclick="openEditModal(${course.id})">Edit</button>
-                        <button class="btn-danger" onclick="deleteCourse(${course.id})">Remove</button>
+                        <button class="btn-danger" onclick="handleDelete(${course.id})">Remove</button>
                     </div>
                 </div>
             `).join('');
